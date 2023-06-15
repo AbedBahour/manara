@@ -45,7 +45,7 @@
 
            <ul class="menu-inner py-1">
              <!-- Dashboards -->
-             <li class="menu-item active open">
+             <li :class="{ 'active open': isActive }" @click="toggleClass" class="menu-item ">
                <a href="javascript:void(0);" class="menu-link menu-toggle">
                  <i class="menu-icon tf-icons ti ti-smart-home"></i>
                  <div data-i18n="Dashboards">Dashboards</div>
@@ -73,7 +73,8 @@
              </li>
 
              <!-- Layouts -->
-             <li class="menu-item">
+             <li :class="{ 'active open': isActiveLayout }" @click="toggleClassLayout" class="menu-item">
+
                <a href="javascript:void(0);" class="menu-link menu-toggle">
                  <i class="menu-icon tf-icons ti ti-layout-sidebar"></i>
                  <div data-i18n="Layouts">Layouts</div>
@@ -1151,7 +1152,8 @@
                            <div class="d-flex">
                              <div class="flex-shrink-0 me-3">
                                <div class="avatar">
-                                 <img src="../../assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+                                 <img src="../../../public/admin-assets/assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+
                                </div>
                              </div>
                              <div class="flex-grow-1">
@@ -1368,7 +1370,7 @@
                  <li class="nav-item navbar-dropdown dropdown-user dropdown">
                    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                      <div class="avatar avatar-online">
-                       <img src="../../assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+                       <img src="../../../public/admin-assets/assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
                      </div>
                    </a>
                    <ul class="dropdown-menu dropdown-menu-end">
@@ -1377,7 +1379,7 @@
                          <div class="d-flex">
                            <div class="flex-shrink-0 me-3">
                              <div class="avatar avatar-online">
-                               <img src="../../assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+                               <img src="../../../public/admin-assets/assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
                              </div>
                            </div>
                            <div class="flex-grow-1">
@@ -1481,3 +1483,27 @@
 
 
  </template>
+
+ <script>
+export default {
+  data() {
+    return {
+      isActive: false,
+      isActiveLayout: false,
+    };
+  },
+  methods: {
+
+    toggleClass() {
+      this.isActiveLayout ? this.isActiveLayout = false : this.isActiveLayout = false;
+      this.isActive = !this.isActive;
+    },
+
+    toggleClassLayout() {
+      this.isActive ? this.isActive = false : this.isActive = false;
+      this.isActiveLayout = !this.isActiveLayout;
+    }
+
+  }
+};
+</script>
