@@ -13,7 +13,8 @@ createInertiaApp({
   setup({ el, App, props, plugin }) {
     createApp({ render: () => h(App, props) })
       .use(i18nVue, {
-          lang: JSON.parse(a).props.locale,    
+          lang: JSON.parse(a).props.locale ,   
+          // lang: 'ar', 
           resolve: async lang => {
               const langs = import.meta.glob('../../lang/*.json');
               return await langs[`../../lang/${lang}.json`]();
